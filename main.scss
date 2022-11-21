@@ -1,0 +1,283 @@
+html,body{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'EB Garamond';font-size: 22px;
+    font-weight: 500;
+}
+
+$white: white;
+$red: red;
+$black: black;
+
+@mixin flex($flex-direction: row){
+    display: flex;
+    flex-direction: $flex-direction;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    color: $black;
+    text-decoration: none;
+    transition: 500ms ease-in-out;
+}
+
+a:hover{
+    font-weight: bold;
+    transform: scale(1.1);
+    text-decoration: none;
+    color: $red;
+}
+
+input{
+    width: 120px;
+    height: 30px;
+    font-weight: bold;
+}
+
+.checkbox{
+    height: 15px;
+    width: 15px;
+}
+
+.username{
+    font-weight: bold;
+}
+
+button{
+    height: 40px;
+    width: 130px;
+    color: $black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: $red;
+}
+
+span{
+    color: $red;
+    font-weight: bold;
+}
+
+
+.blink {
+  animation: blink 2s infinite;
+}
+@keyframes blink {
+  0% { opacity:0; }
+  50% { opacity:1; }
+  100% { opacity:0; }
+}
+
+
+
+.logo{
+    width: 120px;
+    margin: auto;
+}
+
+
+.container{
+    width: 350px;
+    margin: 10px auto;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 20px;
+    display: block;
+    background-image: linear-gradient(-51deg, #63a3ff 0%, #b6dcff 50%, #72beff 100%);
+
+    border: 2px solid $black;
+    border-radius: 15px;
+
+    .menu{
+        width: 100%;
+
+        ul{
+            li{
+                display: inline;
+                margin: 4px;
+
+                a:hover{
+                    font-weight: bold;
+                    color: red;
+                }
+
+            }
+        }
+    }
+
+    .main{
+        @include flex(column);
+        width: 100%;
+
+        .login{
+            width: 90%;
+            margin: 10px auto;
+            text-align: center;
+
+
+        }
+
+      .top{
+        background-color: $white;
+        text-align: center;
+        width: 100%;
+        height: 90px;
+        margin: 5px auto 10px auto;
+        padding-top: 0;
+
+        h1{
+            color: $black;
+            font-size: 1.1em;
+            margin: 0 auto;
+
+            span{
+                color: $red;
+
+            }
+        }
+      }
+
+      .content{
+
+
+        .images{
+            @include flex();
+            justify-content: start;
+            width: 100%;
+            font-weight: 700;
+
+            img{
+                width: 50px;
+                height: 40px;
+                margin: 5px;
+            }
+
+
+        }
+
+            h2{
+                text-align: left;
+                text-decoration: underline;
+                color: $red;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+
+            .text{
+                text-align: left;
+            }
+
+            .black-title{
+                text-decoration: none;
+                color: $black;
+            }
+
+
+            strong{
+                font-weight: bold;
+                margin: auto 0 auto auto;
+                font-size: 1.3em;
+            }
+
+
+            p{
+                color: $black;
+                text-align: right;
+
+
+            }
+
+            .form{
+                display: block;
+
+                &__details{
+                    @include flex();
+
+                    p, label{
+                        margin: 5px;
+
+                        input{
+                            width: 120px;
+
+                        }
+                    }
+                }
+
+                .line{
+                    @include flex();
+                    font-style: italic;
+                    width: 100%;
+
+                    input{
+                        margin: 10px 5px auto auto;
+                    }
+
+                    p{
+                        text-align: left;
+                        font-style: italic;
+                    }
+
+                }
+
+                p{
+                    text-align: left;
+                    font-style: italic;
+                }
+
+                button{
+                    background-color: white;
+                    float: right;
+                    width: 210px;
+                }
+
+                button:hover{
+                    background-color: $red;
+
+                }
+
+
+            }
+
+            .user{
+                display: block;
+                text-align: left;
+
+
+
+                p{
+                    text-align: left
+                }
+
+                .cards{
+                    @include flex();
+                    margin: 30px auto;
+
+                    .card{
+                        display: block;
+                        margin: 5px;
+
+                       a{
+                        img{
+                            width: 140px;
+                            height: 90px;
+                        }
+                       }
+                    }
+                }
+            }
+
+           .button{
+            width: 210px;
+           }
+        }
+
+    }
+}
