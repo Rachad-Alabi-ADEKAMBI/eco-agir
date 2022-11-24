@@ -5,7 +5,7 @@
 <head>
     <?php include 'meta.php'; ?>
 
-    <title>Document</title>
+    <title>EcoAgir - Connexion</title>
 </head>
 <body>
     <div class="container">
@@ -19,7 +19,7 @@
         <main class="main">
             <form action="api/api.php?action=login" class="login"
                 method='POST'>
-                    <img src="public/img/logo-eco.jpeg" alt="" class='logo'> <br>
+                    <img src="public/img/Logo Ecoagir.png" alt="" class='logo'> <br>
                     <h1>Connexion</h1>
 
                 <div class="details">

@@ -60,25 +60,21 @@ function register(){
         }
         */
 
-        if (empty ($_POST['phone'])) {
-            $errors['phone'] = 'Numero de telephone non valide';
-        }
-
-        if(empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-            $errors['email'] ='Email non valide';
+        if(empty($_POST['phone'])){
+            $errors['phone'] ='Numero de telephone non valide';
         } else{
-            $req = $pdo->prepare('SELECT id FROM users WHERE email = ?');
-            $req->execute([$_POST['email']]);
-            $email = $req->fetch();
-            if($email){
-                $errors['email'] = "Ce email est déjà utilisé";
+            $req = $pdo->prepare('SELECT phone FROM users WHERE phone = ?');
+            $req->execute([$_POST['phone']]);
+            $data = $req->fetch();
+            if($data){
+                $errors['phone'] = "Ce numero est déjà utilisé";
             }
         }
 
 
         if (!empty($errors)){
                 $_SESSION['register']=[
-                    'phone' => verifyInput($_POST['email']),
+                    'phone' => verifyInput($_POST['phone']),
                     'email' => verifyInput($_POST['email']),
                 ]
             ?>
@@ -109,9 +105,24 @@ function register(){
           $user_id = $pdo->lastInsertId();
 
           $bill = time() . '_' .$_FILES['bill'] ['name'];
-          $salon = time() . '_' .$_FILES['salon'] ['name'];
-          $salle_a_manger = time() . '_' .$_FILES['salle_a_manger'] ['name'];
-          $chambre = time() . '_' .$_FILES['chambre'] ['name'];
+          $salon1 = time() . '_' .$_FILES['salon1'] ['name'];
+          $salon2 = time() . '_' .$_FILES['salon2'] ['name'];
+          $salon3 = time() . '_' .$_FILES['salon3'] ['name'];
+          $salon4 = time() . '_' .$_FILES['salon4'] ['name'];
+
+          $salle_a_manger1 = time() . '_' .$_FILES['salle_a_manger1'] ['name'];
+          $salle_a_manger2 = time() . '_' .$_FILES['salle_a_manger2'] ['name'];
+          $salle_a_manger3 = time() . '_' .$_FILES['salle_a_manger3'] ['name'];
+          $salle_a_manger4 = time() . '_' .$_FILES['salle_a_manger4'] ['name'];
+
+          $chambre1 = time() . '_' .$_FILES['chambre1'] ['name'];
+          $chambre2 = time() . '_' .$_FILES['chambre2'] ['name'];
+          $chambre3 = time() . '_' .$_FILES['chambre3'] ['name'];
+          $chambre4 = time() . '_' .$_FILES['chambre4'] ['name'];
+          $chambre5 = time() . '_' .$_FILES['chambre5'] ['name'];
+          $chambre6 = time() . '_' .$_FILES['chambre6'] ['name'];
+
+
 
           $target = '../public/img/' .$bill;
 
@@ -123,39 +134,147 @@ function register(){
              $req -> execute([$bill, $user_id]);
           }
 
-          $target = '../public/img/' .$salon;
-          if( move_uploaded_file($_FILES['salon']['tmp_name'], $target)){
+        $target = '../public/img/' .$salon1;
+          if( move_uploaded_file($_FILES['salon1']['tmp_name'], $target)){
 
             $req = $pdo -> prepare ("UPDATE users SET
-            salon = ? WHERE id = ? ");
+            salon1 = ? WHERE id = ? ");
 
-           $req -> execute([$salon, $user_id]);
+           $req -> execute([$salon1, $user_id]);
         }
 
-        $target = '../public/img/' .$salle_a_manger;
-        if( move_uploaded_file($_FILES['salle_a_manger']['tmp_name'], $target)){
+        $target = '../public/img/' .$salon2;
+        if( move_uploaded_file($_FILES['salon2']['tmp_name'], $target)){
 
-            $req = $pdo -> prepare ("UPDATE users SET
-            salle_a_manger = ? WHERE id = ? ");
+          $req = $pdo -> prepare ("UPDATE users SET
+          salon2 = ? WHERE id = ? ");
 
-           $req -> execute([$salle_a_manger, $user_id]);
-        }
+         $req -> execute([$salon2, $user_id]);
+      }
 
-        $target = '../public/img/' .$chambre;
-        if( move_uploaded_file($_FILES['chambre']['tmp_name'], $target)){
+      $target = '../public/img/' .$salon3;
+      if( move_uploaded_file($_FILES['salon3']['tmp_name'], $target)){
 
-            $req = $pdo -> prepare ("UPDATE users SET
-            chambre = ? WHERE id = ? ");
+        $req = $pdo -> prepare ("UPDATE users SET
+        salon3 = ? WHERE id = ? ");
 
-           $req -> execute([$chambre, $user_id]);
-        }
+       $req -> execute([$salon3, $user_id]);
+    }
 
+
+    $target = '../public/img/' .$salon4;
+    if( move_uploaded_file($_FILES['salon4']['tmp_name'], $target)){
+
+      $req = $pdo -> prepare ("UPDATE users SET
+      salon4 = ? WHERE id = ? ");
+
+     $req -> execute([$salon4, $user_id]);
+  }
+
+
+
+
+  $target = '../public/img/' .$salle_a_manger1;
+  if( move_uploaded_file($_FILES['salle_a_manger1']['tmp_name'], $target)){
+
+    $req = $pdo -> prepare ("UPDATE users SET
+    salle_a_manger1 = ? WHERE id = ? ");
+
+   $req -> execute([$salle_a_manger1, $user_id]);
+  }
+
+  $target = '../public/img/' .$salle_a_manger2;
+  if( move_uploaded_file($_FILES['salle_a_manger2']['tmp_name'], $target)){
+
+  $req = $pdo -> prepare ("UPDATE users SET
+  salle_a_manger2 = ? WHERE id = ? ");
+
+  $req -> execute([$salle_a_manger2, $user_id]);
+  }
+
+  $target = '../public/img/' .$salle_a_manger3;
+  if( move_uploaded_file($_FILES['salle_a_manger3']['tmp_name'], $target)){
+
+  $req = $pdo -> prepare ("UPDATE users SET
+  salle_a_manger3 = ? WHERE id = ? ");
+
+  $req -> execute([$salle_a_manger3, $user_id]);
+  }
+
+
+  $target = '../public/img/' .$salle_a_manger4;
+  if( move_uploaded_file($_FILES['salle_a_manger']['tmp_name'], $target)){
+
+  $req = $pdo -> prepare ("UPDATE users SET
+  salle_a_manger4 = ? WHERE id = ? ");
+
+  $req -> execute([$salle_a_manger4, $user_id]);
+  }
+
+
+
+
+  $target = '../public/img/' .$chambre1;
+  if( move_uploaded_file($_FILES['chambre1']['tmp_name'], $target)){
+
+    $req = $pdo -> prepare ("UPDATE users SET
+    chambre1 = ? WHERE id = ? ");
+
+   $req -> execute([$chambre1, $user_id]);
+  }
+
+  $target = '../public/img/' .$chambre2;
+  if( move_uploaded_file($_FILES['chambre2']['tmp_name'], $target)){
+
+  $req = $pdo -> prepare ("UPDATE users SET
+  chambre2 = ? WHERE id = ? ");
+
+  $req -> execute([$chambre2, $user_id]);
+  }
+
+  $target = '../public/img/' .$chambre3;
+  if( move_uploaded_file($_FILES['chambre3']['tmp_name'], $target)){
+
+  $req = $pdo -> prepare ("UPDATE users SET
+  chambre3 = ? WHERE id = ? ");
+
+  $req -> execute([$chambre3, $user_id]);
+  }
+
+
+  $target = '../public/img/' .$chambre4;
+  if( move_uploaded_file($_FILES['chambre']['tmp_name'], $target)){
+
+  $req = $pdo -> prepare ("UPDATE users SET
+  chambre4 = ? WHERE id = ? ");
+
+  $req -> execute([$chambre4, $user_id]);
+  }
+
+  $target = '../public/img/' .$chambre5;
+  if( move_uploaded_file($_FILES['chambre5']['tmp_name'], $target)){
+
+  $req = $pdo -> prepare ("UPDATE users SET
+  chambre5 = ? WHERE id = ? ");
+
+  $req -> execute([$chambre5, $user_id]);
+  }
+
+
+  $target = '../public/img/' .$chambre6;
+  if( move_uploaded_file($_FILES['chambre6']['tmp_name'], $target)){
+
+  $req = $pdo -> prepare ("UPDATE users SET
+  chambre6 = ? WHERE id = ? ");
+
+  $req -> execute([$chambre6, $user_id]);
+  }
 
 
             ?>
             <script>
                 alert("Inscription réussie, un email vous sera envoyé pour finalisation");
-            window.location.replace("../index.php");
+           window.location.replace("../index.php");
                 </script>
             <?php
          }
@@ -163,11 +282,6 @@ function register(){
         }
     }
 
-
-
-if($action == 'register'){
-    register();
-}
 
 function getUsers()
 {
@@ -237,10 +351,36 @@ function login(){
     }
 }
 
+
+function delete($id){
+    if(empty($_POST)){
+        $pdo = getConnexion();
+     //   $id = verifyInput($_GET['id']);
+
+              $sql = $pdo->prepare("UPDATE users SET status = 'Supprimé' WHERE id = ?");
+              $sql->execute(array($id));
+                ?>
+                    <script>
+                        alert('Suppression reussie !');
+                        window.location.replace('../dashboard.php');
+                    </script>
+                <?php
+    }
+}
+
 function logout(){
     unset($_SESSION['user']);
 
     header("Location: ../index.php");
+}
+
+if($action == 'register'){
+    register();
+}
+
+if($action == 'delete'){
+    $id = verifyInput($_GET['id']);
+    delete($id);
 }
 
 if($action == 'login'){

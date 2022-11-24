@@ -6,10 +6,11 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-$pdo = new PDO('mysql:dbname=eco;host=localhost', 'root', '');
+ include 'db.php';
+
 $req = $pdo->prepare("SELECT * FROM
 users
-    WHERE role = 'user'
+    WHERE status != 'Supprimé'
     ORDER BY id DESC");
 $req->execute();
 
@@ -49,6 +50,8 @@ $req->execute();
                                             <td data-label="Date"><?= $data['date_of_insertion'] ?></td>
                                             <td data-label="Email"><a href="client.php?id=<?=$data['id']?>"><?= substr($data['email'], 0, 7) . '...';  ?></a></td>
                                             <td data-label="Contact"><?= substr($data['phone'], 0, 3) . '...'; ?></td>
+                                            <td><a href="deleteUser.php?id=<?=$data['id']?>">
+                                            <i class="fas fa-trash"></i></a></td>
                                     </tr>
                                 <?php }
 
@@ -66,49 +69,5 @@ $req->execute();
         </div>
         </main>
     </div>
-
-    <script>
-        const {
-            createApp
-        } = Vue
-
-        createApp({
-            data() {
-                return {
-                    users: [],
-                    showUsers: false
-                }
-            },
-            mounted: function() {
-                this.displayUsers();
-            },
-            methods: {
-                displayUsers() {
-                    axios.get('http://127.0.0.1/eco/api/users').then(response =>
-                        this.users = response.data)
-                        this.showUsers = true;
-                },
-                format(num){
-                let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
-                return res;
-            },
-                getImgUrl(pic) {
-                return "public/img/" + pic;
-            },
-            getPic(pic){
-                window.location.replace('public/img/'+ pic);
-            },
-            convertDate(date){
-                        function addDaysToDate(date, days){
-                                var res = new Date(date);
-                                res.setDate(res.getDate() + days);
-                                return res;
-                            }
-                             next_date = addDaysToDate(date, 0);
-                        return next_date.toLocaleDateString('fr');
-                    }
-            }
-        }).mount('#app')
-    </script>
 </body>
 </html>

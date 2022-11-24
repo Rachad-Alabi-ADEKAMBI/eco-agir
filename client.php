@@ -21,7 +21,8 @@ if ($_GET['id'] < 0) {
     exit;
 }
 
-$pdo = new PDO('mysql:dbname=eco;host=localhost', 'root', '');
+include 'db.php';
+
 $req = $pdo->prepare("SELECT * FROM
 users
     WHERE id = ?");
@@ -35,10 +36,10 @@ $req->execute(array(verifyInput($_GET['id'])));
 <head>
     <?php include 'meta.php'; ?>
 
-    <title>Eco - Fiche client</title>
+    <title>EcoAgir - Fiche client</title>
 </head>
 <body>
-    <div class="container" id='app'> <br>
+    <div class="container" > <br>
         <?php include 'header.php'; ?>
 
         <main class="main">
@@ -56,7 +57,9 @@ $req->execute(array(verifyInput($_GET['id'])));
             <?php
                 while($data = $req->fetch()){?>
                             <div class="user">
-                            Email: <span><?=$data['email']?></span><br>
+                            Email: <span><?=$data['email']?></span>
+                            <a href="deleteUser.php?id=<?=$data['id']?>">
+                                            <i class="fas fa-trash"></i></a><br>
 
                             Contact: <span><?=$data['phone']?></span>
 
@@ -67,28 +70,111 @@ $req->execute(array(verifyInput($_GET['id'])));
                                     </a><br>
                                     <span>Facture EDF </span>
                                 </div>
-
-                                <div class="card">
-                                <a href="public/img/<?=$data['salon']?>">
-                                        <img src="public/img/<?=$data['salon']?>" alt="">
-                                    </a> <br>
-                                    <span>Salon </span>
-                                </div>
-
-                                <div class="card">
-                                <a href="public/img/<?=$data['salle_a_manger']?>">
-                                        <img src="public/img/<?=$data['salle_a_manger']?>" alt="">
-                                    </a><br>
-                                    <span>Salle a manger </span>
-                                </div>
-
-                                <div class="card">
-                                <a href="public/img/<?=$data['chambre']?>">
-                                        <img src="public/img/<?=$data['chambre']?>" alt="">
-                                    </a><br>
-                                    <span>Chambre </span>
-                                </div>
                             </div>
+
+                            <div class="cards">
+                                 <div class="card">
+                                    <a href="public/img/<?=$data['salon1']?>">
+                                            <img src="public/img/<?=$data['salon1']?>" alt="">
+                                        </a> <br>
+                                        <span>Salon 1 </span>
+                                </div>
+
+                                <div class="card">
+                                    <a href="public/img/<?=$data['salon2']?>">
+                                            <img src="public/img/<?=$data['salon2']?>" alt="">
+                                        </a><br>
+                                        <span>Salon 2  </span>
+                                </div>
+
+                                <div class="card">
+                                    <a href="public/img/<?=$data['salon3']?>">
+                                            <img src="public/img/<?=$data['salon3']?>" alt="">
+                                        </a><br>
+                                        <span>Salon 3</span>
+                                </div>
+
+                                <div class="card">
+                                    <a href="public/img/<?=$data['salon4']?>">
+                                            <img src="public/img/<?=$data['salon4']?>" alt="">
+                                        </a><br>
+                                    <span>Salon 4</span>
+                                </div>
+                            </div> <br>
+
+                            <div class="cards">
+                                 <div class="card">
+                                    <a href="public/img/<?=$data['salle_a_manger1']?>">
+                                            <img src="public/img/<?=$data['salle_a_manger1']?>" alt="">
+                                        </a> <br>
+                                        <span>Salle à manger 1 </span>
+                                </div>
+
+                                <div class="card">
+                                    <a href="public/img/<?=$data['salle_a_manger2']?>">
+                                            <img src="public/img/<?=$data['salle_a_manger2']?>" alt="">
+                                        </a><br>
+                                        <span>salle à manger 2 </span>
+                                </div>
+
+                                <div class="card">
+                                    <a href="public/img/<?=$data['salle_a_manger3']?>">
+                                            <img src="public/img/<?=$data['salle_a_manger3']?>" alt="">
+                                        </a><br>
+                                        <span>Salle à manger 3</span>
+                                </div>
+
+                                <div class="card">
+                                    <a href="public/img/<?=$data['salle_a_manger4']?>">
+                                            <img src="public/img/<?=$data['salle_a_manger4']?>" alt="">
+                                        </a><br>
+                                    <span>salle à manger 4</span>
+                                </div>
+                            </div> <br>
+
+                            <div class="cards">
+    <div class="card">
+    <a href="public/img/<?=$data['chambre1']?>">
+            <img src="public/img/<?=$data['chambre1']?>" alt="">
+        </a> <br>
+        <span>Chambre 1 </span>
+    </div>
+
+    <div class="card">
+    <a href="public/img/<?=$data['chambre2']?>">
+            <img src="public/img/<?=$data['chambre2']?>" alt="">
+        </a><br>
+        <span>Chambre 2 </span>
+    </div>
+
+    <div class="card">
+    <a href="public/img/<?=$data['chambre3']?>">
+            <img src="public/img/<?=$data['chambre3']?>" alt="">
+        </a><br>
+        <span>Chambre 3</span>
+    </div>
+
+    <div class="card">
+    <a href="public/img/<?=$data['chambre4']?>">
+            <img src="public/img/<?=$data['chambre4']?>" alt="">
+        </a><br>
+    <span>Chambre 4</span>
+    </div>
+
+    <div class="card">
+    <a href="public/img/<?=$data['chambre5']?>">
+            <img src="public/img/<?=$data['chambre5']?>" alt="">
+        </a><br>
+        <span>Chambre 5</span>
+    </div>
+
+    <div class="card">
+    <a href="public/img/<?=$data['chambre6']?>">
+            <img src="public/img/<?=$data['chambre6']?>" alt="">
+        </a><br>
+    <span>Chambre 6</span>
+    </div>
+</div>
 
                         </div>
                 <?php }
@@ -97,48 +183,5 @@ $req->execute(array(verifyInput($_GET['id'])));
         </main>
     </div>
 
-    <script>
-        const {
-            createApp
-        } = Vue
-
-        createApp({
-            data() {
-                return {
-                    users: [],
-                    showUsers: false
-                }
-            },
-            mounted: function() {
-                this.displayUsers();
-            },
-            methods: {
-                displayUsers() {
-                    axios.get('http://127.0.0.1/eco/api/users').then(response =>
-                        this.users = response.data)
-                        this.showUsers = true;
-                },
-                format(num){
-                let res = new Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 3 }).format(num);
-                return res;
-            },
-                getImgUrl(pic) {
-                return "public/img/" + pic;
-            },
-            getPic(pic){
-                window.location.replace('public/img/'+ pic);
-            },
-            convertDate(date){
-                        function addDaysToDate(date, days){
-                                var res = new Date(date);
-                                res.setDate(res.getDate() + days);
-                                return res;
-                            }
-                             next_date = addDaysToDate(date, 0);
-                        return next_date.toLocaleDateString('fr');
-                    }
-            }
-        }).mount('#app')
-    </script>
 </body>
 </html>

@@ -6,10 +6,10 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-$pdo = new PDO('mysql:dbname=eco;host=localhost', 'root', '');
+include 'db.php';
 $req = $pdo->prepare("SELECT * FROM
 users
-    WHERE role = 'user'
+    WHERE status != 'Supprimé'
     ORDER BY id DESC");
 $req->execute();
 

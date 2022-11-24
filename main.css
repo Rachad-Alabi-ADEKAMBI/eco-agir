@@ -3,7 +3,7 @@ html, body {
   padding: 0;
   margin: 0;
   font-family: "EB Garamond";
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 500;
 }
 
@@ -56,6 +56,15 @@ span {
   font-weight: bold;
 }
 
+#moreSalon,
+#moreSalonCloseBtn,
+#moreSalle,
+#moreSalleCloseBtn,
+#moreChambre,
+#moreChambreCloseBtn {
+  display: none;
+}
+
 .blink {
   -webkit-animation: blink 2s infinite;
           animation: blink 2s infinite;
@@ -96,7 +105,11 @@ span {
   min-height: 100vh;
   padding-bottom: 20px;
   display: block;
-  background-image: linear-gradient(-51deg, #63a3ff 0%, #b6dcff 50%, #72beff 100%);
+  background-image: url("public/img/imgEco.jpeg");
+  background-image: linear-gradient(-51deg, #63a3ff 0%, #b6dcff 50%, #72beff 100%), url("public/img/imgEco.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   border: 2px solid black;
   border-radius: 15px;
 }
@@ -133,7 +146,7 @@ span {
 }
 .container .main .top h1 {
   color: black;
-  font-size: 1.1em;
+  font-size: 1.4em;
   margin: 0 auto;
 }
 .container .main .top h1 span {
@@ -158,7 +171,7 @@ span {
   text-decoration: underline;
   color: red;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 .container .main .content .text {
   text-align: left;
@@ -178,42 +191,41 @@ span {
 }
 .container .main .content .form {
   display: block;
+  text-align: center;
 }
 .container .main .content .form__details {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
+  text-align: left;
 }
 .container .main .content .form__details p, .container .main .content .form__details label {
-  margin: 5px;
+  margin: 10px auto auto 5px;
+}
+.container .main .content .form__details p strong, .container .main .content .form__details label strong {
+  font-size: 0.9em;
+  font-weight: 700;
 }
 .container .main .content .form__details p input, .container .main .content .form__details label input {
-  width: 120px;
-}
-.container .main .content .form .line {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  font-style: italic;
-  width: 100%;
-}
-.container .main .content .form .line input {
-  margin: 10px 5px auto auto;
-}
-.container .main .content .form .line p {
-  text-align: left;
-  font-style: italic;
+  width: 180px;
 }
 .container .main .content .form p {
   text-align: left;
   font-style: italic;
+  margin: 10px auto auto 5px;
+  width: 100%;
+  font-size: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 .container .main .content .form button {
   background-color: white;
-  float: right;
-  width: 210px;
+  width: 200px;
+  margin: 15px auto 5px auto;
 }
 .container .main .content .form button:hover {
   background-color: red;
