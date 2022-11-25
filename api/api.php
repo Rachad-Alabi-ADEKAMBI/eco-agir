@@ -7,15 +7,6 @@ function getConnexion(){
 }
 
 
-//production
-/*
-function getConnexion(){
-    return new PDO("mysql:host=localhost; dbname=hdwu6055_eco; charset=UTF8",
-    "hdwu6055_eco", "Akk7t1KRrN4Q");
-}
-
-$pdo = new PDO('mysql:dbname=hdwu6055_eco;host=localhost', 'hdwu6055_eco', 'Akk7t1KRrN4Q');
-*/
 $error = array('error' => false);
 $action = '';
 
