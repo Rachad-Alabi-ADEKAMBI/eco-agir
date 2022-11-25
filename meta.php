@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="table.css">
     <script src="https://kit.fontawesome.com/b14771b76e.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/jpeg" href="public/img/logo-eco.ico">
+    <link rel="icon" type="image/jpeg" href="public/img/logo-eco-blanc.ico">
 <script src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'></script>
 <script src='https://unpkg.com/vue@3'></script>
 <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>

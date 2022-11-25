@@ -25,7 +25,7 @@
 
             <div class="content">
                 <div class="images">
-                    <img src="public/img/logo-eco.jpg" alt="brasseur gratuit subventionne par EDF">
+                    <img src="public/img/logo-eco-blanc.jpg" alt="brasseur gratuit subventionne par EDF">
                     <img src="public/img/teaserbox_2440927305.png" alt="brasseur gratuit subventionne par EDF">
                      <ul>
                         <li>Pose offerte</li>
